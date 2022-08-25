@@ -1,0 +1,18 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode  
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: CartOnline_development
+  
+test:
+  <<: *default
+  database: CartOnline_test
+
+production:
+  <<: *default
+  database: CartOnline_production
+  username: CartOnline
+  password: <%= ENV['CARTONLINE_DATABASE_PASSWORD'] %>
